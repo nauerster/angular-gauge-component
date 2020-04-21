@@ -1,0 +1,30 @@
+<div
+  class="gauge"
+  [ngClass]="setClassOptions()"
+  [attr.data-percentage]="options.percentage"
+  (click)="whenClicked(options.label, $event)">
+  <div class="gauge__circle">
+    <div class="mask full">
+      <div class="fill"></div>
+    </div>
+    <div class="mask half">
+      <div class="fill"></div>
+      <div class="fill fix"></div>
+    </div>
+  </div>
+  <div class="gauge__inset">
+    <div
+      class="gauge__value"
+      [ngStyle]="{ 'border-color' : options.bgColor }">
+      {{ options.value }}
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="options.label">
+  <div
+    class="gauge__label"
+    (click)="whenClicked(options.label, $event)"
+    [attr.data-selector]="options.label">
+    {{ options.label }}
+  </div>
+</ng-container>
